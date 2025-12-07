@@ -34,17 +34,17 @@ variable "lambda_function_name_prefix" {
 variable "s3_policy_name" {
   type        = string
   description = "Enter your IAM Role Prefix"
-  default     = "lambda-function-invoke"
+  default     = "s3-function-invoke"
 }
 variable "dynamodb_policy_name" {
   type        = string
   description = "Enter your IAM Role Prefix"
-  default     = "lambda-function-invoke"
+  default     = "dynamo-function-invoke"
 }
 variable "glue_policy_name" {
   type        = string
   description = "Enter your IAM Role Prefix"
-  default     = "lambda-function-invoke"
+  default     = "glue-function-invoke"
 }
 
 variable "api_name" {
