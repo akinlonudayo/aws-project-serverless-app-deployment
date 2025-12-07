@@ -17,7 +17,7 @@ resource "aws_apigatewayv2_integration" "s3_lambda" {
   integration_type = "AWS_PROXY"
 
   connection_type           = "INTERNET"
-  integration_method        = "GET"
+  integration_method        = "POST"
   integration_uri           = aws_lambda_function.invoke_s3.invoke_arn
 }
 
@@ -64,7 +64,7 @@ resource "aws_lambda_permission" "lambda_permission_invoke_dynamodb" {
   principal     = "apigateway.amazonaws.com"
 
 
-  source_arn = "${aws_api_gateway_rest_api.serverless_api.execution_arn}/*/*/*"
+  source_arn = "${aws_apigatewayv2_api.serverless_api.execution_arn}/*/*/*"
 }
 
 resource "aws_lambda_permission" "lambda_permission_invoke_s3" {
@@ -74,7 +74,7 @@ resource "aws_lambda_permission" "lambda_permission_invoke_s3" {
   principal     = "apigateway.amazonaws.com"
 
 
-  source_arn = "${aws_api_gateway_rest_api.serverless_api.execution_arn}/*/*/*"
+  source_arn = "${aws_apigatewayv2_api.serverless_api.execution_arn}/*/*/*"
 }
 
 resource "aws_lambda_permission" "lambda_permission_invoke_glue" {
@@ -84,5 +84,5 @@ resource "aws_lambda_permission" "lambda_permission_invoke_glue" {
   principal     = "apigateway.amazonaws.com"
 
 
-  source_arn = "${aws_api_gateway_rest_api.serverless_api.execution_arn}/*/*/*"
+  source_arn = "${aws_apigatewayv2_api.serverless_api.execution_arn}/*/*/*"
 }
